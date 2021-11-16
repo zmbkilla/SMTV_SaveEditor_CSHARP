@@ -19,6 +19,8 @@ namespace SMTV_SaveEditor_CSHARP
             InitializeComponent();
         }
 
+
+        //player data button
         private void button1_Click(object sender, EventArgs e)
         {
             var data_pl = new PL_Data();
@@ -62,13 +64,11 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.textBox1.Text = Encoding.Unicode.GetString(fbytes);
 
             data_pl.textBox2.Text = Encoding.Unicode.GetString(lbytes);
-            string testsss = Encoding.Unicode.GetString(fbytes);
-            char x = testsss[0];
-
-            MessageBox.Show(Convert.ToString(x));
+            
             flowLayoutPanel1.Controls.Add(data_pl);
         }
 
+        //load decrypted save
         private void openDecryptedSaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog opf = new OpenFileDialog();
@@ -80,11 +80,15 @@ namespace SMTV_SaveEditor_CSHARP
             {
                 SaveC.Save_Dir = opf.FileName.ToString();
                 MessageBox.Show("Save File Selected");
+                fullControls(this);
             }
 
-            fullControls(this);
+
+
+            
         }
 
+        // [NOT WORKING] load macca and glory
         private void button2_Click(object sender, EventArgs e)
         {
             var data_pl = new PL_CuGl();
@@ -125,13 +129,16 @@ namespace SMTV_SaveEditor_CSHARP
                 lbytes[i] = Convert.ToByte(Glory.Substring(i * 2, 2), 16);
             }
 
+            string test1 = Encoding.Unicode.GetString(fbytes);
+            string test2 = Encoding.Unicode.GetString(lbytes);
+
 
             data_pl.numericUpDown1.Value = Convert.ToInt16(Encoding.Unicode.GetString(fbytes));
             data_pl.numericUpDown2.Value = Convert.ToInt16(Encoding.Unicode.GetString(lbytes));
 
             flowLayoutPanel1.Controls.Add(data_pl);
         }
-
+        // initialize form
         private void Form1_Load(object sender, EventArgs e)
         {
             if (SaveC.Save_Dir == null)
@@ -142,6 +149,7 @@ namespace SMTV_SaveEditor_CSHARP
             }
             
         }
+
 
         private void DisableControls(Control con)
         {
@@ -160,7 +168,7 @@ namespace SMTV_SaveEditor_CSHARP
                 EnableControls(con.Parent);
             }
         }
-
+        //re-enable controls after loading file
         private void fullControls(Control con)
         {
             foreach (Control c in con.Controls)

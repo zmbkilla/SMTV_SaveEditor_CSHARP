@@ -24,6 +24,7 @@ namespace SMTV_SaveEditor_CSHARP
             fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string FName = textBox1.Text;
+            string LName = textBox2.Text;
             char[] fcharar = FName.ToCharArray();
             br.Close();
             BinaryWriter BWriter = new BinaryWriter(File.OpenWrite(SaveC.Save_Dir));
@@ -37,6 +38,11 @@ namespace SMTV_SaveEditor_CSHARP
 
             BWriter.BaseStream.Position = 0x904;
             BWriter.Write(Encoding.Unicode.GetBytes(FName));
+
+
+            BWriter.BaseStream.Position = 0x91C;
+            BWriter.Write(Encoding.Unicode.GetBytes(LName));
+
 
             // }
             BWriter.Close();

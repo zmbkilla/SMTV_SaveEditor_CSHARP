@@ -99,14 +99,14 @@ namespace SMTV_SaveEditor_CSHARP
             string Glory = null;
 
 
-            for (int i = 0x2F70; i <= 0x2F80; i++)
+            for (int i = 0x2F70; i <= 0x2F71; i++)
             {
                 br.BaseStream.Position = i;
 
                 Macca += br.ReadByte().ToString("X2");
             }
 
-            for (int i = 0x2F80; i <= 0x2F90; i++)
+            for (int i = 0x2F88; i <= 0x2F89; i++)
             {
                 br.BaseStream.Position = i;
 
@@ -117,24 +117,26 @@ namespace SMTV_SaveEditor_CSHARP
 
             br.Close();
 
-            var fbytes = new byte[Macca.Length / 2];
-            for (var i = 0; i < fbytes.Length; i++)
-            {
-                fbytes[i] = Convert.ToByte(Macca.Substring(i * 2, 2), 16);
-            }
+            //var fbytes = new byte[Macca.Length / 2];
+            //for (var i = 0; i < fbytes.Length; i++)
+            //{
+            //    fbytes[i] = Convert.ToByte(Macca.Substring(i * 2, 2), 16);
+            //}
+            //
+            //var lbytes = new byte[Glory.Length / 2];
+            //for (var i = 0; i < lbytes.Length; i++)
+            //{
+            //    lbytes[i] = Convert.ToByte(Glory.Substring(i * 2, 2), 16);
+            //}
 
-            var lbytes = new byte[Glory.Length / 2];
-            for (var i = 0; i < lbytes.Length; i++)
-            {
-                lbytes[i] = Convert.ToByte(Glory.Substring(i * 2, 2), 16);
-            }
-
-            string test1 = Encoding.Unicode.GetString(fbytes);
-            string test2 = Encoding.Unicode.GetString(lbytes);
+            int mval = Int32.Parse(Macca, System.Globalization.NumberStyles.HexNumber);
+            int gval = Int32.Parse(Glory, System.Globalization.NumberStyles.HexNumber);
 
 
-            data_pl.numericUpDown1.Value = Convert.ToInt16(Encoding.Unicode.GetString(fbytes));
-            data_pl.numericUpDown2.Value = Convert.ToInt16(Encoding.Unicode.GetString(lbytes));
+
+
+            data_pl.numericUpDown1.Value = mval;
+            data_pl.numericUpDown2.Value = gval;
 
             flowLayoutPanel1.Controls.Add(data_pl);
         }

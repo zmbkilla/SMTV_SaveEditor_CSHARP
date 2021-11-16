@@ -99,14 +99,14 @@ namespace SMTV_SaveEditor_CSHARP
             string Glory = null;
 
 
-            for (int i = 0x2F70; i <= 0x2F71; i++)
+            for (int i = 0x2F71; i >= 0x2F70; i--)
             {
                 br.BaseStream.Position = i;
 
                 Macca += br.ReadByte().ToString("X2");
             }
 
-            for (int i = 0x2F88; i <= 0x2F89; i++)
+            for (int i = 0x2F89; i >= 0x2F88; i--)
             {
                 br.BaseStream.Position = i;
 

@@ -67,6 +67,18 @@
     <Compile Include="PL_Data.Designer.cs">
       <DependentUpon>PL_Data.cs</DependentUpon>
     </Compile>
+    <Compile Include="PL_Demon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL_Demon.Designer.cs">
+      <DependentUpon>PL_Demon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL_Stat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL_Stat.Designer.cs">
+      <DependentUpon>PL_Stat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveC.cs" />
@@ -79,6 +91,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL_Data.resx">
       <DependentUpon>PL_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL_Demon.resx">
+      <DependentUpon>PL_Demon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL_Stat.resx">
+      <DependentUpon>PL_Stat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

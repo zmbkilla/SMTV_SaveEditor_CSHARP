@@ -186,5 +186,33 @@ namespace SMTV_SaveEditor_CSHARP
             ToolTip tp = new ToolTip();
             tp.SetToolTip(menuStrip1, "Open a decrypted save");
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var data_pl = new PL_Demon();
+            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            fs.Close();
+            BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+            string FName = null;
+            string LName = null;
+
+            for (int i = 0xAE6; i <= 0xAE7; i++)
+            {
+                br.BaseStream.Position = i;
+
+                FName += br.ReadByte().ToString("X2");
+            }
+
+
+
+            int Did = Int32.Parse(FName, System.Globalization.NumberStyles.HexNumber);
+
+            br.Close();
+
+            data_pl.comboBox1.SelectedIndex = 0;
+            data_pl.comboBox2.Text = Did.ToString();
+            MessageBox.Show("Value = " + FName);
+            flowLayoutPanel1.Controls.Add(data_pl);
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace SMTV_SaveEditor_CSHARP
 
             BinaryWriter bw = new BinaryWriter(File.OpenWrite(SaveC.Save_Dir));
 
-            bw.BaseStream.wr
+            
 
         }
     }

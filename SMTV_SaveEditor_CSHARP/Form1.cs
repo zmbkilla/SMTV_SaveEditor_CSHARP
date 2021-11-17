@@ -132,6 +132,7 @@ namespace SMTV_SaveEditor_CSHARP
             int mval = Int32.Parse(Macca, System.Globalization.NumberStyles.HexNumber);
             int gval = Int32.Parse(Glory, System.Globalization.NumberStyles.HexNumber);
 
+            
 
 
 

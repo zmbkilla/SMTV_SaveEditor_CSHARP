@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SMTV_SaveEditor_CSHARP
 {
-    class Command
+    class variables
     {
-
+        public static int mReverseval;
+        public static int gReverseval;
     }
 }

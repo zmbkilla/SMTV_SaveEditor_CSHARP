@@ -93,13 +93,22 @@ namespace SMTV_SaveEditor_CSHARP
 
             var test = variables.demonquery(comboBox1.SelectedIndex);
 
+            
+
+            if(test[0] == 65535)
+            {
+                MessageBox.Show("this slot is empty.", "Warning");
+                button1.Enabled = false;
+                return;
+            }
+
             numericUpDown6.Value = test[0];
             numericUpDown1.Value = test[1];
             numericUpDown2.Value = test[2];
             numericUpDown3.Value = test[3];
             numericUpDown4.Value = test[4];
             numericUpDown5.Value = test[5];
-
+            button1.Enabled = true;
            
         }
     }

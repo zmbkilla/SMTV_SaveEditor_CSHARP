@@ -49,14 +49,14 @@ namespace SMTV_SaveEditor_CSHARP
             BWriter.Write(bvit);
 
             BWriter.BaseStream.Position = 0x8C4;
-            BWriter.Write(bstr);
+            BWriter.Write(bmag);
 
 
             BWriter.BaseStream.Position = 0x8C6;
-            BWriter.Write(bvit);
+            BWriter.Write(bagi);
 
-            BWriter.BaseStream.Position = 0x8C6;
-            BWriter.Write(bvit);
+            BWriter.BaseStream.Position = 0x8C8;
+            BWriter.Write(blu);
 
 
             // }

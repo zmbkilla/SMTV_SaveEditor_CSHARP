@@ -24,7 +24,7 @@ namespace SMTV_SaveEditor_CSHARP
             fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
 
-            decimal iDemonID = Convert.ToDecimal(comboBox2.Text);
+            decimal iDemonID = numericUpDown6.Value;
             decimal str = numericUpDown1.Value;
             decimal vit = numericUpDown2.Value;
             decimal mag = numericUpDown3.Value;
@@ -42,41 +42,47 @@ namespace SMTV_SaveEditor_CSHARP
 
             BinaryWriter bw = new BinaryWriter(File.OpenWrite(SaveC.Save_Dir));
 
+            //demon id
             int slot0ID = 0xAE6;
             int slotmod = slot0ID + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bDID);
-
+            //str
             int slot0STR = 0xA98;
             slotmod = slot0STR + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bstr);
-
+            //vit
             int slot0VIT = 0xA9A;
             slotmod = slot0VIT + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bvit);
-
+            //mag
             int slot0MAG = 0xA9C;
             slotmod = slot0MAG + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bmag);
-
+            //agi
             int slot0AGI = 0xA9E;
             slotmod = slot0AGI + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bagi);
-
+            //lu
             int slot0LU = 0xAA0;
             slotmod = slot0LU + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(blu);
+
+
+            br.Close();
+            fs.Close();
+            bw.Close();
 
             MessageBox.Show("Changes applied","Success");
 
@@ -87,7 +93,7 @@ namespace SMTV_SaveEditor_CSHARP
 
             var test = variables.demonquery(comboBox1.SelectedIndex);
 
-            comboBox2.Text = test[0].ToString();
+            numericUpDown6.Value = test[0];
             numericUpDown1.Value = test[1];
             numericUpDown2.Value = test[2];
             numericUpDown3.Value = test[3];

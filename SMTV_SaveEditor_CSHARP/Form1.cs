@@ -14,7 +14,8 @@ namespace SMTV_SaveEditor_CSHARP
 {
     public partial class Form1 : Form
     {
-        
+        public SoundPlayer sp;
+        public bool musicp = true;
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace SMTV_SaveEditor_CSHARP
         //player data button
         private void button1_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_Data();
             FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
             fs.Close();
@@ -91,7 +93,8 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.textBox2.Text = Encoding.Unicode.GetString(lbytes);
 
 
-            
+            br.Close();
+            fs.Close();
 
             flowLayoutPanel1.Controls.Add(data_pl);
         }
@@ -119,6 +122,7 @@ namespace SMTV_SaveEditor_CSHARP
         // load macca and glory
         private void button2_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_CuGl();
             FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
             fs.Close();
@@ -167,6 +171,9 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.numericUpDown1.Value = mval;
             data_pl.numericUpDown2.Value = gval;
 
+            br.Close();
+            fs.Close();
+
             flowLayoutPanel1.Controls.Add(data_pl);
         }
         // initialize form
@@ -175,7 +182,7 @@ namespace SMTV_SaveEditor_CSHARP
             
             
             Stream str = Properties.Resources.menu;
-            SoundPlayer sp = new SoundPlayer(str);
+            sp = new SoundPlayer(str);
             sp.PlayLooping();
 
             if (SaveC.Save_Dir == null)
@@ -208,6 +215,7 @@ namespace SMTV_SaveEditor_CSHARP
         //re-enable controls after loading file
         private void fullControls(Control con)
         {
+
             foreach (Control c in con.Controls)
             {
                 fullControls(c);
@@ -223,6 +231,7 @@ namespace SMTV_SaveEditor_CSHARP
 
         private void button4_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_Demon();
             
 
@@ -233,6 +242,7 @@ namespace SMTV_SaveEditor_CSHARP
 
         private void button3_Click(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_Stat();
             FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
             fs.Close();
@@ -297,7 +307,22 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.numericUpDown4.Value = agival;
             data_pl.numericUpDown5.Value = luval;
 
+
+            br.Close();
+            fs.Close();
+
             flowLayoutPanel1.Controls.Add(data_pl);
+        }
+
+        private void stopPlayMusicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (musicp == true)
+            {
+                sp.Stop();
+            } else if (musicp == false)
+            {
+                sp.PlayLooping();
+            }
         }
     }
 }

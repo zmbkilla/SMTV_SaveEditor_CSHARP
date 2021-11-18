@@ -36,13 +36,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.stopPlayMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openDecryptedSaveToolStripMenuItem});
+            this.openDecryptedSaveToolStripMenuItem,
+            this.stopPlayMusicToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -104,6 +106,13 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // stopPlayMusicToolStripMenuItem
+            // 
+            this.stopPlayMusicToolStripMenuItem.Name = "stopPlayMusicToolStripMenuItem";
+            this.stopPlayMusicToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.stopPlayMusicToolStripMenuItem.Text = "Stop/Play Music";
+            this.stopPlayMusicToolStripMenuItem.Click += new System.EventHandler(this.stopPlayMusicToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,6 +145,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ToolStripMenuItem stopPlayMusicToolStripMenuItem;
     }
 }
 

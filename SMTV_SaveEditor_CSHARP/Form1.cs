@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,6 +30,9 @@ namespace SMTV_SaveEditor_CSHARP
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string FName = null;
             string LName = null;
+            string DLC = null;
+            string NGplus = null;
+            string cycle = null;
 
             for (int i = 0x904; i <= 0x91C; i++)
             {
@@ -44,7 +48,14 @@ namespace SMTV_SaveEditor_CSHARP
                 LName += br.ReadByte().ToString("X2");
             }
 
+            br.BaseStream.Position = 0x45D;
+            DLC += br.ReadByte().ToString("X2");
 
+            br.BaseStream.Position = 0x45C;
+            NGplus += br.ReadByte().ToString("X2");
+
+            br.BaseStream.Position = 0x436;
+            cycle += br.ReadByte().ToString("X2");
 
             br.Close();
 
@@ -60,11 +71,28 @@ namespace SMTV_SaveEditor_CSHARP
                 lbytes[i] = Convert.ToByte(LName.Substring(i * 2, 2), 16);
             }
 
+            int dlcval = Int32.Parse(DLC, System.Globalization.NumberStyles.HexNumber);
+            int ngval = Int32.Parse(NGplus, System.Globalization.NumberStyles.HexNumber);
+            int cycleval = Int32.Parse(cycle, System.Globalization.NumberStyles.HexNumber);
+
+            if (dlcval == 255)
+            {
+                data_pl.checkBox1.Checked = true;
+            }
+
+            if (ngval != 0)
+            {
+                data_pl.checkBox2.Checked = true;
+            }
+            data_pl.numericUpDown1.Value = cycleval;
 
             data_pl.textBox1.Text = Encoding.Unicode.GetString(fbytes);
 
             data_pl.textBox2.Text = Encoding.Unicode.GetString(lbytes);
+
+
             
+
             flowLayoutPanel1.Controls.Add(data_pl);
         }
 
@@ -88,7 +116,7 @@ namespace SMTV_SaveEditor_CSHARP
             
         }
 
-        // [NOT WORKING] load macca and glory
+        // load macca and glory
         private void button2_Click(object sender, EventArgs e)
         {
             var data_pl = new PL_CuGl();
@@ -144,6 +172,12 @@ namespace SMTV_SaveEditor_CSHARP
         // initialize form
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+            
+            Stream str = Properties.Resources.menu;
+            SoundPlayer sp = new SoundPlayer(str);
+            sp.PlayLooping();
+
             if (SaveC.Save_Dir == null)
             {
                 DisableControls(this);
@@ -190,28 +224,79 @@ namespace SMTV_SaveEditor_CSHARP
         private void button4_Click(object sender, EventArgs e)
         {
             var data_pl = new PL_Demon();
+            
+
+            data_pl.comboBox1.SelectedIndex = 0;
+           
+            flowLayoutPanel1.Controls.Add(data_pl);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var data_pl = new PL_Stat();
             FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
             fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
-            string FName = null;
-            string LName = null;
+            string STR = null;
+            string VIT = null;
+            string MAG = null;
+            string AGI = null;
+            string LU = null;
 
-            for (int i = 0xAE6; i <= 0xAE7; i++)
+
+
+            for (int i = 0x8C1; i >= 0x8C0; i--)
             {
                 br.BaseStream.Position = i;
 
-                FName += br.ReadByte().ToString("X2");
+                STR += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8C3; i >= 0x8C2; i--)
+            {
+                br.BaseStream.Position = i;
+
+                VIT += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8C5; i >= 0x8C4; i--)
+            {
+                br.BaseStream.Position = i;
+
+                MAG += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8C7; i >= 0x8C6; i--)
+            {
+                br.BaseStream.Position = i;
+
+                AGI += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8C9; i >= 0x8C8; i--)
+            {
+                br.BaseStream.Position = i;
+
+                LU += br.ReadByte().ToString("X2");
             }
 
 
+            int strval = Int32.Parse(STR, System.Globalization.NumberStyles.HexNumber);
+            int vitval = Int32.Parse(VIT, System.Globalization.NumberStyles.HexNumber);
+            int magval = Int32.Parse(MAG, System.Globalization.NumberStyles.HexNumber);
+            int agival = Int32.Parse(AGI, System.Globalization.NumberStyles.HexNumber);
+            int luval = Int32.Parse(LU, System.Globalization.NumberStyles.HexNumber);
 
-            int Did = Int32.Parse(FName, System.Globalization.NumberStyles.HexNumber);
 
-            br.Close();
 
-            data_pl.comboBox1.SelectedIndex = 0;
-            data_pl.comboBox2.Text = Did.ToString();
-            MessageBox.Show("Value = " + FName);
+
+
+            data_pl.numericUpDown1.Value = strval;
+            data_pl.numericUpDown2.Value = vitval;
+            data_pl.numericUpDown3.Value = magval;
+            data_pl.numericUpDown4.Value = agival;
+            data_pl.numericUpDown5.Value = luval;
+
             flowLayoutPanel1.Controls.Add(data_pl);
         }
     }

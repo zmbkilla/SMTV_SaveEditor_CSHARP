@@ -124,6 +124,7 @@
   <ItemGroup>
     <None Include="Resources\foldericon.jpg" />
     <None Include="Resources\Google-Noto-Emoji-Objects-62917-open-file-folder.png" />
+    <None Include="Resources\Menu.wav" />
     <Content Include="Untitled.ico" />
   </ItemGroup>
   <ItemGroup>

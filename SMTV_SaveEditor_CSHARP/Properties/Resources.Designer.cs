@@ -79,5 +79,14 @@ namespace SMTV_SaveEditor_CSHARP.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream menu {
+            get {
+                return ResourceManager.GetStream("menu", resourceCulture);
+            }
+        }
     }
 }

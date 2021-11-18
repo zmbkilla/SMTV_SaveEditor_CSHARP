@@ -59,7 +59,7 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(114, 76);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            999999,
+            9999999,
             0,
             0,
             0});

@@ -61,7 +61,7 @@ namespace SMTV_SaveEditor_CSHARP
             BWriter.Write(bmac);
 
 
-            BWriter.BaseStream.Position = 0x91C;
+            BWriter.BaseStream.Position = 0x2F88;
             BWriter.Write(bglo);
 
 

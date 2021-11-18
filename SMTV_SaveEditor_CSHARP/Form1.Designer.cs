@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.openDecryptedSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.openDecryptedSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,14 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // openDecryptedSaveToolStripMenuItem
+            // 
+            this.openDecryptedSaveToolStripMenuItem.Image = global::SMTV_SaveEditor_CSHARP.Properties.Resources.Google_Noto_Emoji_Objects_62917_open_file_folder;
+            this.openDecryptedSaveToolStripMenuItem.Name = "openDecryptedSaveToolStripMenuItem";
+            this.openDecryptedSaveToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
+            this.openDecryptedSaveToolStripMenuItem.Click += new System.EventHandler(this.openDecryptedSaveToolStripMenuItem_Click);
+            this.openDecryptedSaveToolStripMenuItem.MouseHover += new System.EventHandler(this.openDecryptedSaveToolStripMenuItem_MouseHover);
             // 
             // button1
             // 
@@ -84,6 +92,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Player Stats";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -94,14 +103,6 @@
             this.button4.Text = "Demons";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // openDecryptedSaveToolStripMenuItem
-            // 
-            this.openDecryptedSaveToolStripMenuItem.Image = global::SMTV_SaveEditor_CSHARP.Properties.Resources.Google_Noto_Emoji_Objects_62917_open_file_folder;
-            this.openDecryptedSaveToolStripMenuItem.Name = "openDecryptedSaveToolStripMenuItem";
-            this.openDecryptedSaveToolStripMenuItem.Size = new System.Drawing.Size(28, 20);
-            this.openDecryptedSaveToolStripMenuItem.Click += new System.EventHandler(this.openDecryptedSaveToolStripMenuItem_Click);
-            this.openDecryptedSaveToolStripMenuItem.MouseHover += new System.EventHandler(this.openDecryptedSaveToolStripMenuItem_MouseHover);
             // 
             // Form1
             // 

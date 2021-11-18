@@ -54,25 +54,25 @@ namespace SMTV_SaveEditor_CSHARP
             bw.BaseStream.Position = slotmod;
             bw.Write(bstr);
 
-            int slot0VIT = 0xA98;
+            int slot0VIT = 0xA9A;
             slotmod = slot0VIT + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bvit);
 
-            int slot0MAG = 0xA98;
+            int slot0MAG = 0xA9C;
             slotmod = slot0MAG + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bmag);
 
-            int slot0AGI = 0xA98;
+            int slot0AGI = 0xA9E;
             slotmod = slot0AGI + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;
             bw.Write(bagi);
 
-            int slot0LU = 0xA98;
+            int slot0LU = 0xAA0;
             slotmod = slot0LU + (comboBox1.SelectedIndex * 392);
 
             bw.BaseStream.Position = slotmod;

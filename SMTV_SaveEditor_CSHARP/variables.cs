@@ -41,7 +41,11 @@ namespace SMTV_SaveEditor_CSHARP
             string Dlua = null;
             string Dluc = null;
             string Dhp = null;
-            string Dmp = null;
+            string Dhpa = null;
+            string Dhpc = null;
+            string Dmp = null;        
+            string Dmpa = null;
+            string Dmpc = null;
 
             int slot0ID = 0xAE6;
             int slot0STR = 0xA98;
@@ -60,7 +64,11 @@ namespace SMTV_SaveEditor_CSHARP
             int slot0LUa = 0xAC0;
             int slot0LUc = 0xAD0;
             int slot0HP = 0xA94;
+            int slot0HPa = 0xAB4;
+            int slot0HPc = 0xAD8;
             int slot0MP = 0xA96;
+            int slot0MPa = 0xAB6;
+            int slot0MPc = 0xADA;
 
 
             int slotmod = slot0ID + (392 * index);
@@ -249,6 +257,29 @@ namespace SMTV_SaveEditor_CSHARP
                 Dhp += br.ReadByte().ToString("X2");
             }
 
+            slotmod = slot0HPa + (392 * index);
+            slotend = slotmod + 1;
+
+            for (int i = slotend; i >= slotmod; i--)
+            {
+                br.BaseStream.Position = i;
+
+                Dhpa += br.ReadByte().ToString("X2");
+            }
+
+            slotmod = slot0HPc + (392 * index);
+            slotend = slotmod + 1;
+
+            for (int i = slotend; i >= slotmod; i--)
+            {
+                br.BaseStream.Position = i;
+
+                Dhpc += br.ReadByte().ToString("X2");
+            }
+
+
+            //mp
+
             slotmod = slot0MP + (392 * index);
             slotend = slotmod + 1;
 
@@ -257,6 +288,26 @@ namespace SMTV_SaveEditor_CSHARP
                 br.BaseStream.Position = i;
 
                 Dmp += br.ReadByte().ToString("X2");
+            }
+
+            slotmod = slot0MPa + (392 * index);
+            slotend = slotmod + 1;
+
+            for (int i = slotend; i >= slotmod; i--)
+            {
+                br.BaseStream.Position = i;
+
+                Dmpa += br.ReadByte().ToString("X2");
+            }
+
+            slotmod = slot0MPc + (392 * index);
+            slotend = slotmod + 1;
+
+            for (int i = slotend; i >= slotmod; i--)
+            {
+                br.BaseStream.Position = i;
+
+                Dmpc += br.ReadByte().ToString("X2");
             }
 
 
@@ -274,14 +325,18 @@ namespace SMTV_SaveEditor_CSHARP
             int vitcval = Int32.Parse(Dvitc, System.Globalization.NumberStyles.HexNumber);
             int magaval = Int32.Parse(Dmaga, System.Globalization.NumberStyles.HexNumber);
             int magcval = Int32.Parse(Dmagc, System.Globalization.NumberStyles.HexNumber);
-            int agiaval = Int32.Parse(Dvita, System.Globalization.NumberStyles.HexNumber);
-            int agicval = Int32.Parse(Dvitc, System.Globalization.NumberStyles.HexNumber);
-            int luaval = Int32.Parse(Dvita, System.Globalization.NumberStyles.HexNumber);
-            int lucval = Int32.Parse(Dvitc, System.Globalization.NumberStyles.HexNumber);
+            int agiaval = Int32.Parse(Dagia, System.Globalization.NumberStyles.HexNumber);
+            int agicval = Int32.Parse(Dagic, System.Globalization.NumberStyles.HexNumber);
+            int luaval = Int32.Parse(Dlua, System.Globalization.NumberStyles.HexNumber);
+            int lucval = Int32.Parse(Dluc, System.Globalization.NumberStyles.HexNumber);
+            int hpaval = Int32.Parse(Dhpa, System.Globalization.NumberStyles.HexNumber);
+            int hpcval = Int32.Parse(Dhpc, System.Globalization.NumberStyles.HexNumber);
+            int mpaval = Int32.Parse(Dmpa, System.Globalization.NumberStyles.HexNumber);
+            int mpcval = Int32.Parse(Dmpc, System.Globalization.NumberStyles.HexNumber);
             fs.Close();
             fs.Close();
             br.Close();
-            int[] intarr = new int[] {didval,strval,vitval,magval,agival,luval,hpval,mpval,straval,strcval,vitaval,vitcval,magaval,magcval,agiaval,agicval,luaval,lucval };
+            int[] intarr = new int[] {didval,strval,vitval,magval,agival,luval,hpval,mpval,straval,strcval,vitaval,vitcval,magaval,magcval,agiaval,agicval,luaval,lucval,hpaval,hpcval,mpaval,mpcval };
             
             return intarr;
         }
@@ -303,6 +358,21 @@ namespace SMTV_SaveEditor_CSHARP
             ds.Dispose();
 
             return data;
+        }
+
+        public static int[] itemlist()
+        {
+            int[] itemid;
+            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            fs.Close();
+            BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+            string ItemCode = null;
+
+
+
+
+            itemid = new int[] { 0 };
+            return itemid;
         }
 
     }

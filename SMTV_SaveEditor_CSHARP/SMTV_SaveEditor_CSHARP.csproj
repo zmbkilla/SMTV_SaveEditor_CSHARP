@@ -73,6 +73,24 @@
     <Compile Include="PL_Demon.Designer.cs">
       <DependentUpon>PL_Demon.cs</DependentUpon>
     </Compile>
+    <Compile Include="PL_Essence.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL_Essence.Designer.cs">
+      <DependentUpon>PL_Essence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL_inv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL_inv.Designer.cs">
+      <DependentUpon>PL_inv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL_Items.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL_Items.Designer.cs">
+      <DependentUpon>PL_Items.cs</DependentUpon>
+    </Compile>
     <Compile Include="PL_Soul.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +118,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL_Demon.resx">
       <DependentUpon>PL_Demon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL_Essence.resx">
+      <DependentUpon>PL_Essence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL_inv.resx">
+      <DependentUpon>PL_inv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL_Items.resx">
+      <DependentUpon>PL_Items.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL_Soul.resx">
       <DependentUpon>PL_Soul.cs</DependentUpon>

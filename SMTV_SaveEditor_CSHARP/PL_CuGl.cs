@@ -58,11 +58,11 @@ namespace SMTV_SaveEditor_CSHARP
 
             //Array.Reverse(pls);
             BWriter.BaseStream.Position = 0x2F70;
-            BWriter.Write(bmac);
+            BWriter.Write(bmac, 0, 4);
 
 
             BWriter.BaseStream.Position = 0x2F88;
-            BWriter.Write(bglo);
+            BWriter.Write(bglo, 0, 4);
 
 
             // }

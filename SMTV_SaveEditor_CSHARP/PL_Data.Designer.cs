@@ -100,9 +100,11 @@
             this.checkBox2.TabIndex = 6;
             this.checkBox2.Text = "NG+";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Enabled = false;
             this.numericUpDown1.Location = new System.Drawing.Point(324, 104);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             99,

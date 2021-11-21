@@ -86,6 +86,7 @@ namespace SMTV_SaveEditor_CSHARP
             if (ngval != 0)
             {
                 data_pl.checkBox2.Checked = true;
+                data_pl.numericUpDown1.Enabled = true;
             }
             data_pl.numericUpDown1.Value = cycleval;
 

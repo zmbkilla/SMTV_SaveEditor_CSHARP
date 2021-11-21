@@ -42,21 +42,21 @@ namespace SMTV_SaveEditor_CSHARP
 
 
             BWriter.BaseStream.Position = 0x8C0;
-            BWriter.Write(bstr);
+            BWriter.Write(bstr, 0, 2);
 
 
             BWriter.BaseStream.Position = 0x8C2;
-            BWriter.Write(bvit);
+            BWriter.Write(bvit, 0, 2);
 
             BWriter.BaseStream.Position = 0x8C4;
-            BWriter.Write(bmag);
+            BWriter.Write(bmag, 0, 2);
 
 
             BWriter.BaseStream.Position = 0x8C6;
-            BWriter.Write(bagi);
+            BWriter.Write(bagi, 0, 2);
 
             BWriter.BaseStream.Position = 0x8C8;
-            BWriter.Write(blu);
+            BWriter.Write(blu, 0, 2);
 
 
             // }

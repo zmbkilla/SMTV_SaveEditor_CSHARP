@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SMTV_SaveEditor_CSHARP
 {
@@ -202,6 +203,7 @@ namespace SMTV_SaveEditor_CSHARP
                 DisableControls(c);
             }
             con.Enabled = false;
+            executeToolStripMenuItem.Enabled = false;
         }
 
         private void EnableControls(Control con)
@@ -221,6 +223,8 @@ namespace SMTV_SaveEditor_CSHARP
                 fullControls(c);
             }
             con.Enabled = true;
+
+            executeToolStripMenuItem.Enabled = false;
         }
 
         private void openDecryptedSaveToolStripMenuItem_MouseHover(object sender, EventArgs e)
@@ -252,6 +256,8 @@ namespace SMTV_SaveEditor_CSHARP
             string MAG = null;
             string AGI = null;
             string LU = null;
+            string HP = null;
+            string MP = null;
 
 
 
@@ -290,12 +296,28 @@ namespace SMTV_SaveEditor_CSHARP
                 LU += br.ReadByte().ToString("X2");
             }
 
+            for (int i = 0x8BD; i >= 0x8BC; i--)
+            {
+                br.BaseStream.Position = i;
+
+                HP += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8BF; i >= 0x8BE; i--)
+            {
+                br.BaseStream.Position = i;
+
+                MP += br.ReadByte().ToString("X2");
+            }
+
 
             int strval = Int32.Parse(STR, System.Globalization.NumberStyles.HexNumber);
             int vitval = Int32.Parse(VIT, System.Globalization.NumberStyles.HexNumber);
             int magval = Int32.Parse(MAG, System.Globalization.NumberStyles.HexNumber);
             int agival = Int32.Parse(AGI, System.Globalization.NumberStyles.HexNumber);
             int luval = Int32.Parse(LU, System.Globalization.NumberStyles.HexNumber);
+            int hpval = Int32.Parse(HP, System.Globalization.NumberStyles.HexNumber);
+            int mpval = Int32.Parse(MP, System.Globalization.NumberStyles.HexNumber);
 
 
 
@@ -306,6 +328,8 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.numericUpDown3.Value = magval;
             data_pl.numericUpDown4.Value = agival;
             data_pl.numericUpDown5.Value = luval;
+            data_pl.numericUpDown6.Value = hpval;
+            data_pl.numericUpDown7.Value = mpval;
 
 
             br.Close();
@@ -323,6 +347,34 @@ namespace SMTV_SaveEditor_CSHARP
             {
                 sp.PlayLooping();
             }
+        }
+
+        private void selectExePathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opd = new OpenFileDialog();
+
+            if (opd.ShowDialog() == DialogResult.OK)
+            {
+                SaveC.Util_Dir = opd.FileName.ToString();
+            }
+        }
+
+        private void inputToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opd = new OpenFileDialog();
+
+            if (opd.ShowDialog() == DialogResult.OK)
+            {
+                inputToolStripMenuItem.Text = opd.FileName.ToString();
+                SaveC.Input_Dir = opd.FileName.ToString();
+                executeToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void executeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string svArgs = "/K " + @"""" + SaveC.Util_Dir + " -i " + @"""" + SaveC.Input_Dir + "\"";
+            Process.Start("cmd.exe", svArgs);
         }
     }
 }

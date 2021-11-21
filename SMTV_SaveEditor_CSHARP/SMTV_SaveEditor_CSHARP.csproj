@@ -73,6 +73,12 @@
     <Compile Include="PL_Demon.Designer.cs">
       <DependentUpon>PL_Demon.cs</DependentUpon>
     </Compile>
+    <Compile Include="PL_Soul.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PL_Soul.Designer.cs">
+      <DependentUpon>PL_Soul.cs</DependentUpon>
+    </Compile>
     <Compile Include="PL_Stat.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <EmbeddedResource Include="PL_Demon.resx">
       <DependentUpon>PL_Demon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PL_Soul.resx">
+      <DependentUpon>PL_Soul.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PL_Stat.resx">
       <DependentUpon>PL_Stat.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +117,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\SMTV_SaveEditor_CSHARP.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\SMTV_SaveEditor_CSHARP.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

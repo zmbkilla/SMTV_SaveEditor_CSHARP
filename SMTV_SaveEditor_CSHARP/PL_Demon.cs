@@ -170,8 +170,11 @@ namespace SMTV_SaveEditor_CSHARP
             int slot0MP = 0xA96;
             slotmod = slot0MP + (comboBox1.SelectedIndex * 392);
 
+            byte test1 = bmp[0];
+            byte test2 = bmp[1];
+
             bw.BaseStream.Position = slotmod;
-            bw.Write(bmp[0]);
+            bw.Write(bmp, 0,2);
 
 
             br.Close();

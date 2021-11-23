@@ -161,10 +161,10 @@ namespace SMTV_SaveEditor_CSHARP
             bw.BaseStream.Position = slotmod;
             bw.Write(blu, 0, 2);
 
-            bw.BaseStream.Position = slotmod;
+            bw.BaseStream.Position = slotmoda;
             bw.Write(blua, 0, 2);
 
-            bw.BaseStream.Position = slotmod;
+            bw.BaseStream.Position = slotmodc;
             bw.Write(bluc, 0, 2);
 
             //hp
@@ -230,7 +230,12 @@ namespace SMTV_SaveEditor_CSHARP
             label19.Text = dname.Rows[Convert.ToInt32(test[0] - 1)]["DemonName"].ToString();
             //hp/mp
             numericUpDown7.Value = test[6];
+            numericUpDown19.Value = test[18];
+            numericUpDown20.Value = test[19];
+
             numericUpDown8.Value = test[7];
+            numericUpDown21.Value = test[20];
+            numericUpDown22.Value = test[21];
             //stats
             //str
             numericUpDown1.Value = test[1];

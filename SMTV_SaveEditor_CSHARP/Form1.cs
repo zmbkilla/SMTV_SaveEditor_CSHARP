@@ -259,6 +259,16 @@ namespace SMTV_SaveEditor_CSHARP
             string LU = null;
             string HP = null;
             string MP = null;
+            string stra = null;
+            string strc = null;
+            string vita = null;
+            string vitc = null;
+            string maga = null;
+            string magc = null;
+            string agia = null;
+            string agic = null;
+            string lua = null;
+            string luc = null;
 
 
 

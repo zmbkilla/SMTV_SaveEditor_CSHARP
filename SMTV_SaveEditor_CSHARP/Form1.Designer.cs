@@ -33,7 +33,6 @@
             this.openDecryptedSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopPlayMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveUtilityOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectExePathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveutilCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoEncodeDecodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +55,8 @@
             this.saveUtilityOptionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(933, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,18 +78,10 @@
             // saveUtilityOptionsToolStripMenuItem
             // 
             this.saveUtilityOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectExePathToolStripMenuItem,
             this.saveutilCommandsToolStripMenuItem});
             this.saveUtilityOptionsToolStripMenuItem.Name = "saveUtilityOptionsToolStripMenuItem";
             this.saveUtilityOptionsToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
             this.saveUtilityOptionsToolStripMenuItem.Text = "Save Utility options";
-            // 
-            // selectExePathToolStripMenuItem
-            // 
-            this.selectExePathToolStripMenuItem.Name = "selectExePathToolStripMenuItem";
-            this.selectExePathToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.selectExePathToolStripMenuItem.Text = "Select exe path";
-            this.selectExePathToolStripMenuItem.Click += new System.EventHandler(this.selectExePathToolStripMenuItem_Click);
             // 
             // saveutilCommandsToolStripMenuItem
             // 
@@ -124,9 +116,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 91);
+            this.button1.Location = new System.Drawing.Point(14, 105);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 43);
+            this.button1.Size = new System.Drawing.Size(88, 50);
             this.button1.TabIndex = 1;
             this.button1.Text = "Player data";
             this.button1.UseVisualStyleBackColor = true;
@@ -135,16 +128,18 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(299, 91);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(349, 105);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(463, 333);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(540, 384);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 153);
+            this.button2.Location = new System.Drawing.Point(14, 177);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 43);
+            this.button2.Size = new System.Drawing.Size(88, 50);
             this.button2.TabIndex = 3;
             this.button2.Text = "Money / Glory";
             this.button2.UseVisualStyleBackColor = true;
@@ -152,9 +147,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 212);
+            this.button3.Location = new System.Drawing.Point(14, 245);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 43);
+            this.button3.Size = new System.Drawing.Size(88, 50);
             this.button3.TabIndex = 4;
             this.button3.Text = "Player Stats";
             this.button3.UseVisualStyleBackColor = true;
@@ -162,9 +158,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 271);
+            this.button4.Location = new System.Drawing.Point(14, 313);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 43);
+            this.button4.Size = new System.Drawing.Size(88, 50);
             this.button4.TabIndex = 5;
             this.button4.Text = "Demons";
             this.button4.UseVisualStyleBackColor = true;
@@ -172,27 +169,30 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 339);
+            this.button5.Location = new System.Drawing.Point(14, 391);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 43);
+            this.button5.Size = new System.Drawing.Size(88, 50);
             this.button5.TabIndex = 6;
             this.button5.Text = "Essences";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(102, 91);
+            this.button6.Location = new System.Drawing.Point(119, 105);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 43);
+            this.button6.Size = new System.Drawing.Size(88, 50);
             this.button6.TabIndex = 7;
             this.button6.Text = "Items";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -203,6 +203,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
             this.Text = "Shin Megami Tensei V Save Editor";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -225,7 +226,6 @@
         private System.Windows.Forms.ToolStripMenuItem stopPlayMusicToolStripMenuItem;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ToolStripMenuItem saveUtilityOptionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem selectExePathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveutilCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoEncodeDecodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inputToolStripMenuItem;

@@ -28,8 +28,8 @@ namespace SMTV_SaveEditor_CSHARP
         {
             flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_Data();
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
+            //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            //fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string FName = null;
             string LName = null;
@@ -96,7 +96,7 @@ namespace SMTV_SaveEditor_CSHARP
 
 
             br.Close();
-            fs.Close();
+            //fs.Close();
 
             flowLayoutPanel1.Controls.Add(data_pl);
         }
@@ -146,8 +146,8 @@ namespace SMTV_SaveEditor_CSHARP
         {
             flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_CuGl();
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
+            //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            //fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string Macca = null;
             string Glory = null;
@@ -194,7 +194,7 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.numericUpDown2.Value = gval;
 
             br.Close();
-            fs.Close();
+            //fs.Close();
 
             flowLayoutPanel1.Controls.Add(data_pl);
         }
@@ -269,8 +269,8 @@ namespace SMTV_SaveEditor_CSHARP
         {
             flowLayoutPanel1.Controls.Clear();
             var data_pl = new PL_Stat();
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
+            //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            //fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string STR = null;
             string VIT = null;
@@ -411,19 +411,20 @@ namespace SMTV_SaveEditor_CSHARP
                 HP += br.ReadByte().ToString("X2");
             }
 
-            //for (int i = 0x8DD; i >= 0x8DC; i--)
-            //{
-            //    br.BaseStream.Position = i;
-            //
-            //    HP += br.ReadByte().ToString("X2");
-            //}
-            //
-            //for (int i = 0x8F1; i >= 0x8F0; i--)
-            //{
-            //    br.BaseStream.Position = i;
-            //
-            //    HP += br.ReadByte().ToString("X2");
-            //}
+            for (int i = 0x8DD; i >= 0x8DC; i--)
+            {
+                br.BaseStream.Position = i;
+            
+                HP += br.ReadByte().ToString("X2");
+            }
+            
+            for (int i = 0x8F1; i >= 0x8F0; i--)
+            {
+                br.BaseStream.Position = i;
+            
+                HP += br.ReadByte().ToString("X2");
+            }
+            
             //mp
 
             for (int i = 0x8BF; i >= 0x8BE; i--)
@@ -478,7 +479,7 @@ namespace SMTV_SaveEditor_CSHARP
 
 
             br.Close();
-            fs.Close();
+            //fs.Close();
 
             flowLayoutPanel1.Controls.Add(data_pl);
         }
@@ -491,16 +492,6 @@ namespace SMTV_SaveEditor_CSHARP
             } else if (musicp == false)
             {
                 sp.PlayLooping();
-            }
-        }
-
-        private void selectExePathToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opd = new OpenFileDialog();
-
-            if (opd.ShowDialog() == DialogResult.OK)
-            {
-                SaveC.Util_Dir = opd.FileName.ToString();
             }
         }
 
@@ -518,8 +509,20 @@ namespace SMTV_SaveEditor_CSHARP
 
         private void executeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string svArgs = "/K " + @"""" + SaveC.Util_Dir + " -i " + @"""" + SaveC.Input_Dir + "\"";
-            Process.Start("cmd.exe", svArgs);
+            SaveCrypt.CryptFile(SaveC.Input_Dir);
+            //string svArgs = "/K " + @"""" + SaveC.Util_Dir + " -i " + @"""" + SaveC.Input_Dir + "\"";
+            //Process.Start("cmd.exe", svArgs);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var data_pl = new PL_inv();
+
+
+            
+
+            flowLayoutPanel1.Controls.Add(data_pl);
         }
     }
 }

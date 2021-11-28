@@ -38,6 +38,12 @@ namespace SMTV_SaveEditor_CSHARP
             decimal agic = numericUpDown15.Value;
             decimal lua = numericUpDown16.Value;
             decimal luc = numericUpDown17.Value;
+            decimal hp = numericUpDown6.Value;
+            decimal hpa = numericUpDown18.Value;
+            decimal hpc = numericUpDown19.Value;
+            decimal mp = numericUpDown7.Value;
+            decimal mpa = numericUpDown20.Value;
+            decimal mpc = numericUpDown21.Value;
             //char[] fcharar = Mac.ToCharArray();
 
 
@@ -56,6 +62,12 @@ namespace SMTV_SaveEditor_CSHARP
             byte[] bagic = BitConverter.GetBytes(Convert.ToInt32(agic));
             byte[] blua = BitConverter.GetBytes(Convert.ToInt32(lua));
             byte[] bluc = BitConverter.GetBytes(Convert.ToInt32(luc));
+            byte[] bhp = BitConverter.GetBytes(Convert.ToInt32(hp));
+            byte[] bhpa = BitConverter.GetBytes(Convert.ToInt32(hpa));
+            byte[] bhpc = BitConverter.GetBytes(Convert.ToInt32(hpc));
+            byte[] bmp = BitConverter.GetBytes(Convert.ToInt32(mp));
+            byte[] bmpa = BitConverter.GetBytes(Convert.ToInt32(mpa));
+            byte[] bmpc = BitConverter.GetBytes(Convert.ToInt32(mpc));
 
 
             br.Close();
@@ -65,23 +77,72 @@ namespace SMTV_SaveEditor_CSHARP
             BWriter.BaseStream.Position = 0x8C0;
             BWriter.Write(bstr, 0, 2);
 
+            BWriter.BaseStream.Position = 0x8D0;
+            BWriter.Write(bstra, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8E0;
+            BWriter.Write(bstrc, 0, 2);
+
             //vit
             BWriter.BaseStream.Position = 0x8C2;
             BWriter.Write(bvit, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8D2;
+            BWriter.Write(bvita, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8E2;
+            BWriter.Write(bvitc, 0, 2);
 
             //mag
             BWriter.BaseStream.Position = 0x8C4;
             BWriter.Write(bmag, 0, 2);
 
+            BWriter.BaseStream.Position = 0x8D4;
+            BWriter.Write(bmaga, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8E4;
+            BWriter.Write(bmagc, 0, 2);
+
             //agi
             BWriter.BaseStream.Position = 0x8C6;
             BWriter.Write(bagi, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8D6;
+            BWriter.Write(bagia, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8E6;
+            BWriter.Write(bagic, 0, 2);
             //lu
             BWriter.BaseStream.Position = 0x8C8;
             BWriter.Write(blu, 0, 2);
 
+            BWriter.BaseStream.Position = 0x8D8;
+            BWriter.Write(blua, 0, 2);
 
-            // }
+            BWriter.BaseStream.Position = 0x8E8;
+            BWriter.Write(bluc, 0, 2);
+
+
+            // hp
+            BWriter.BaseStream.Position = 0x8BC;
+            BWriter.Write(bhp, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8DC;
+            BWriter.Write(bhpa, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8F0;
+            BWriter.Write(bhpc, 0, 2);
+
+            //mp
+            BWriter.BaseStream.Position = 0x8BE;
+            BWriter.Write(bmp, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8DE;
+            BWriter.Write(bmpa, 0, 2);
+
+            BWriter.BaseStream.Position = 0x8F2;
+            BWriter.Write(bmpc, 0, 2);
+
             BWriter.Close();
 
 

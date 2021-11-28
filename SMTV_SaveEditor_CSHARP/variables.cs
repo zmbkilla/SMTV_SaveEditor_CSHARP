@@ -21,8 +21,8 @@ namespace SMTV_SaveEditor_CSHARP
         public static int[] demonquery(int index)
         {
             
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
+            //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            //fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string Did = null;
             string Dstr = null;
@@ -333,8 +333,8 @@ namespace SMTV_SaveEditor_CSHARP
             int hpcval = Int32.Parse(Dhpc, System.Globalization.NumberStyles.HexNumber);
             int mpaval = Int32.Parse(Dmpa, System.Globalization.NumberStyles.HexNumber);
             int mpcval = Int32.Parse(Dmpc, System.Globalization.NumberStyles.HexNumber);
-            fs.Close();
-            fs.Close();
+            //fs.Close();
+            //fs.Close();
             br.Close();
             int[] intarr = new int[] {didval,strval,vitval,magval,agival,luval,hpval,mpval,straval,strcval,vitaval,vitcval,magaval,magcval,agiaval,agicval,luaval,lucval,hpaval,hpcval,mpaval,mpcval };
             
@@ -354,7 +354,7 @@ namespace SMTV_SaveEditor_CSHARP
             ),
         Encoding.UTF8.GetBytes(fileName)
     ));
-            var connectionString = string.Format("Provider=Microsoft.Jet.OLEDB.4.0; data source={0};User Id =admin;Password=;Extended Properties=Excel 8.0;", filetest);
+            var connectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0; data source={0};User Id =admin;Password=;Extended Properties=Excel 8.0;", fileName);
 
             var adapter = new OleDbDataAdapter("SELECT * FROM [DemonList$]", connectionString);
             var ds = new DataSet();
@@ -373,16 +373,70 @@ namespace SMTV_SaveEditor_CSHARP
         public static int[] itemlist()
         {
             int[] itemid;
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
+           // FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+           // fs.Close();
             BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
-            string ItemCode = null;
+            List<int> ItemCode = new List<int>();
 
+            for (int i = 0x33A1; i <= 0x340E; i++)
+            {
+                string hex = null;
 
+                if (i == 0x33BD)
+                {
+                    i = 0x33C4;
+                    continue;
+                } else if (i == 0x33D0){
 
+                    i = 0x33D1;
+                    continue;
+                
+                } else if (i == 0x33D6)
+                {
+                    continue;
+                } else if (i == 0x33D8)
+                {
+                    i = 0x33DB;
+                    continue;
+                } else if (i == 0x33E5)
+                {
+                    continue;
+                }else if (i == 0x33E8)
+                {
+                    i = 0x33F1;
+                    continue;
+                }
 
-            itemid = new int[] { 0 };
+                br.BaseStream.Position = i;
+                hex = br.ReadByte().ToString("X2");
+
+                ItemCode.Add(Int32.Parse(hex, System.Globalization.NumberStyles.HexNumber));
+                
+            }
+
+            itemid = ItemCode.ToArray();
+            
             return itemid;
+        }
+
+        public static DataTable ReadItemDB()
+        {
+            var fileName = string.Format("{0}\\DemonDB.xls", Directory.GetCurrentDirectory());
+            
+            var connectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0; data source={0};User Id =admin;Password=;Extended Properties=Excel 8.0;", fileName);
+
+            var adapter = new OleDbDataAdapter("SELECT * FROM [ItemList$]", connectionString);
+            var ds = new DataSet();
+            var data = new DataTable();
+            adapter.Fill(data);
+
+
+
+
+            adapter.Dispose();
+            ds.Dispose();
+
+            return data;
         }
 
     }

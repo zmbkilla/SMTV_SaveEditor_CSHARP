@@ -344,7 +344,17 @@ namespace SMTV_SaveEditor_CSHARP
         public static DataTable ReadDemonDB()
         {
             var fileName = string.Format("{0}\\DemonDB.xls", Directory.GetCurrentDirectory());
-            var connectionString = string.Format("Provider=Microsoft.Jet.OLEDB.4.0; data source={0}; Extended Properties=Excel 8.0;", fileName);
+            var filetest = Encoding.ASCII.GetString(
+    Encoding.Convert(
+        Encoding.UTF8,
+        Encoding.GetEncoding(
+            Encoding.ASCII.EncodingName,
+            new EncoderReplacementFallback(string.Empty),
+            new DecoderExceptionFallback()
+            ),
+        Encoding.UTF8.GetBytes(fileName)
+    ));
+            var connectionString = string.Format("Provider=Microsoft.Jet.OLEDB.4.0; data source={0};User Id =admin;Password=;Extended Properties=Excel 8.0;", filetest);
 
             var adapter = new OleDbDataAdapter("SELECT * FROM [DemonList$]", connectionString);
             var ds = new DataSet();

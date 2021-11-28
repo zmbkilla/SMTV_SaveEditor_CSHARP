@@ -111,7 +111,27 @@ namespace SMTV_SaveEditor_CSHARP
 
             if(opf.ShowDialog() == DialogResult.OK)
             {
+                
+
                 SaveC.Save_Dir = opf.FileName.ToString();
+                if (SaveC.Save_Dir != null)
+                {
+                    FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+                    fs.Close();
+                    BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+                    string savecheck = null;
+                    for (int i = 0x0; i <= 0x1; i++)
+                    {
+                        br.BaseStream.Position = i;
+
+                        savecheck += br.ReadByte().ToString("X2");
+                    }
+                    if(savecheck == "FFFC")
+                    {
+                        MessageBox.Show("save is encrypted");
+                    }
+                }
+
                 MessageBox.Show("Save File Selected");
                 fullControls(this);
             }
@@ -271,7 +291,7 @@ namespace SMTV_SaveEditor_CSHARP
             string luc = null;
 
 
-
+            //str
             for (int i = 0x8C1; i >= 0x8C0; i--)
             {
                 br.BaseStream.Position = i;
@@ -279,12 +299,42 @@ namespace SMTV_SaveEditor_CSHARP
                 STR += br.ReadByte().ToString("X2");
             }
 
+            for (int i = 0x8D1; i >= 0x8D0; i--)
+            {
+                br.BaseStream.Position = i;
+
+                stra += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8E1; i >= 0x8E0; i--)
+            {
+                br.BaseStream.Position = i;
+
+                strc += br.ReadByte().ToString("X2");
+            }
+            //vit
             for (int i = 0x8C3; i >= 0x8C2; i--)
             {
                 br.BaseStream.Position = i;
 
                 VIT += br.ReadByte().ToString("X2");
             }
+
+            for (int i = 0x8D3; i >= 0x8D2; i--)
+            {
+                br.BaseStream.Position = i;
+
+                vita += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8E3; i >= 0x8E2; i--)
+            {
+                br.BaseStream.Position = i;
+
+                vitc += br.ReadByte().ToString("X2");
+            }
+
+            //mag
 
             for (int i = 0x8C5; i >= 0x8C4; i--)
             {
@@ -293,12 +343,42 @@ namespace SMTV_SaveEditor_CSHARP
                 MAG += br.ReadByte().ToString("X2");
             }
 
+            for (int i = 0x8D5; i >= 0x8D4; i--)
+            {
+                br.BaseStream.Position = i;
+
+                maga += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8E5; i >= 0x8E4; i--)
+            {
+                br.BaseStream.Position = i;
+
+                magc += br.ReadByte().ToString("X2");
+            }
+            //agi
             for (int i = 0x8C7; i >= 0x8C6; i--)
             {
                 br.BaseStream.Position = i;
 
                 AGI += br.ReadByte().ToString("X2");
             }
+
+            for (int i = 0x8D7; i >= 0x8D6; i--)
+            {
+                br.BaseStream.Position = i;
+
+                agia += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8E7; i >= 0x8E6; i--)
+            {
+                br.BaseStream.Position = i;
+
+                agic += br.ReadByte().ToString("X2");
+            }
+
+            //lu
 
             for (int i = 0x8C9; i >= 0x8C8; i--)
             {
@@ -307,12 +387,44 @@ namespace SMTV_SaveEditor_CSHARP
                 LU += br.ReadByte().ToString("X2");
             }
 
+            for (int i = 0x8D9; i >= 0x8D8; i--)
+            {
+                br.BaseStream.Position = i;
+
+                lua += br.ReadByte().ToString("X2");
+            }
+
+            for (int i = 0x8E9; i >= 0x8E8; i--)
+            {
+                br.BaseStream.Position = i;
+
+                luc += br.ReadByte().ToString("X2");
+            }
+
+            //hp
+
+
             for (int i = 0x8BD; i >= 0x8BC; i--)
             {
                 br.BaseStream.Position = i;
 
                 HP += br.ReadByte().ToString("X2");
             }
+
+            //for (int i = 0x8DD; i >= 0x8DC; i--)
+            //{
+            //    br.BaseStream.Position = i;
+            //
+            //    HP += br.ReadByte().ToString("X2");
+            //}
+            //
+            //for (int i = 0x8F1; i >= 0x8F0; i--)
+            //{
+            //    br.BaseStream.Position = i;
+            //
+            //    HP += br.ReadByte().ToString("X2");
+            //}
+            //mp
 
             for (int i = 0x8BF; i >= 0x8BE; i--)
             {
@@ -322,11 +434,23 @@ namespace SMTV_SaveEditor_CSHARP
             }
 
 
+
+
             int strval = Int32.Parse(STR, System.Globalization.NumberStyles.HexNumber);
+            int straval = Int32.Parse(stra, System.Globalization.NumberStyles.HexNumber);
+            int strcval = Int32.Parse(strc, System.Globalization.NumberStyles.HexNumber);
             int vitval = Int32.Parse(VIT, System.Globalization.NumberStyles.HexNumber);
+            int vitaval = Int32.Parse(vita, System.Globalization.NumberStyles.HexNumber);
+            int vitcval = Int32.Parse(vitc, System.Globalization.NumberStyles.HexNumber);
             int magval = Int32.Parse(MAG, System.Globalization.NumberStyles.HexNumber);
+            int magaval = Int32.Parse(maga, System.Globalization.NumberStyles.HexNumber);
+            int magcval = Int32.Parse(magc, System.Globalization.NumberStyles.HexNumber);
             int agival = Int32.Parse(AGI, System.Globalization.NumberStyles.HexNumber);
+            int agiaval = Int32.Parse(agia, System.Globalization.NumberStyles.HexNumber);
+            int agicval = Int32.Parse(agic, System.Globalization.NumberStyles.HexNumber);
             int luval = Int32.Parse(LU, System.Globalization.NumberStyles.HexNumber);
+            int luaval = Int32.Parse(lua, System.Globalization.NumberStyles.HexNumber);
+            int lucval = Int32.Parse(luc, System.Globalization.NumberStyles.HexNumber);
             int hpval = Int32.Parse(HP, System.Globalization.NumberStyles.HexNumber);
             int mpval = Int32.Parse(MP, System.Globalization.NumberStyles.HexNumber);
 
@@ -341,6 +465,16 @@ namespace SMTV_SaveEditor_CSHARP
             data_pl.numericUpDown5.Value = luval;
             data_pl.numericUpDown6.Value = hpval;
             data_pl.numericUpDown7.Value = mpval;
+            data_pl.numericUpDown8.Value = straval;
+            data_pl.numericUpDown9.Value = strcval;
+            data_pl.numericUpDown10.Value = vitaval;
+            data_pl.numericUpDown11.Value = vitcval;
+            data_pl.numericUpDown12.Value = magaval;
+            data_pl.numericUpDown13.Value = magcval;
+            data_pl.numericUpDown14.Value = agiaval;
+            data_pl.numericUpDown15.Value = agicval;
+            data_pl.numericUpDown16.Value = luaval;
+            data_pl.numericUpDown17.Value = lucval;
 
 
             br.Close();

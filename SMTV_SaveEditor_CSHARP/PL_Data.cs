@@ -37,9 +37,9 @@ namespace SMTV_SaveEditor_CSHARP
             
 
 
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
-            BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+            //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            //fs.Close();
+            //BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
             string FName = textBox1.Text;
             string LName = textBox2.Text;
             char[] fcharar = FName.ToCharArray();
@@ -65,7 +65,7 @@ namespace SMTV_SaveEditor_CSHARP
             byte[] bdlc = BitConverter.GetBytes(Convert.ToInt32(dlcchk));
             byte[] bngp = BitConverter.GetBytes(Convert.ToInt32(ngpchk));
             byte[] bcycle = BitConverter.GetBytes(Convert.ToInt32(ngcycle));
-            br.Close();
+            //br.Close();
             BinaryWriter BWriter = new BinaryWriter(File.OpenWrite(SaveC.Save_Dir));
 
             // for (int i = 0x904, ii = 0; i <= 0x91C && ii < FName.Length; i+=2, ii++)
@@ -96,6 +96,7 @@ namespace SMTV_SaveEditor_CSHARP
 
 
             // }
+
             BWriter.Close();
 
         }

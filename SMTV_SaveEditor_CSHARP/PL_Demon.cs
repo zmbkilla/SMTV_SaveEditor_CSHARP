@@ -20,9 +20,9 @@ namespace SMTV_SaveEditor_CSHARP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-            fs.Close();
-            BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+            //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+            //fs.Close();
+            //BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
 
 
 
@@ -49,6 +49,16 @@ namespace SMTV_SaveEditor_CSHARP
             decimal hpc = numericUpDown20.Value;
             decimal mpa = numericUpDown21.Value;
             decimal mpc = numericUpDown22.Value;
+
+            decimal s1 = comboBox2.SelectedIndex + 1;
+            decimal s2 = comboBox3.SelectedIndex + 1;
+            decimal s3 = comboBox4.SelectedIndex + 1;
+            decimal s4 = comboBox5.SelectedIndex + 1;
+            decimal s5 = comboBox6.SelectedIndex + 1;
+            decimal s6 = comboBox7.SelectedIndex + 1;
+            decimal s7 = comboBox8.SelectedIndex + 1;
+            decimal s8 = comboBox9.SelectedIndex + 1;
+
             byte[] bDID = BitConverter.GetBytes(Convert.ToInt32(iDemonID));
             byte[] bstr = BitConverter.GetBytes(Convert.ToInt32(str));
             byte[] bvit = BitConverter.GetBytes(Convert.ToInt32(vit));
@@ -71,8 +81,16 @@ namespace SMTV_SaveEditor_CSHARP
             byte[] bhpc = BitConverter.GetBytes(Convert.ToInt32(hpc));
             byte[] bmpa = BitConverter.GetBytes(Convert.ToInt32(mpa));
             byte[] bmpc = BitConverter.GetBytes(Convert.ToInt32(mpc));
+            byte[] bs1 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs2 = BitConverter.GetBytes(Convert.ToInt32(s2));
+            byte[] bs3 = BitConverter.GetBytes(Convert.ToInt32(s3));
+            byte[] bs4 = BitConverter.GetBytes(Convert.ToInt32(s4));
+            byte[] bs5 = BitConverter.GetBytes(Convert.ToInt32(s5));
+            byte[] bs6 = BitConverter.GetBytes(Convert.ToInt32(s6));
+            byte[] bs7 = BitConverter.GetBytes(Convert.ToInt32(s7));
+            byte[] bs8 = BitConverter.GetBytes(Convert.ToInt32(s8));
 
-            br.Close();
+            //br.Close();
 
 
             BinaryWriter bw = new BinaryWriter(File.OpenWrite(SaveC.Save_Dir));
@@ -86,8 +104,8 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bDID, 0, 2);
             //str
             int slot0STR = 0xA98;
-            int slot0STRa = 0xAB8;
-            int slot0STRc = 0xAC8;
+            int slot0STRa = slot0STR + 16;
+            int slot0STRc = slot0STRa + 16;
             slotmod = slot0STR + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0STRa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0STRc + (comboBox1.SelectedIndex * 392);
@@ -102,8 +120,8 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bstrc, 0, 2);
             //vit
             int slot0VIT = 0xA9A;
-            int slot0VITa = 0xABA;
-            int slot0VITc = 0xACA;
+            int slot0VITa = slot0VIT + 16;
+            int slot0VITc = slot0VITa + 16;
             slotmod = slot0VIT + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0VITa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0VITc + (comboBox1.SelectedIndex * 392);
@@ -120,8 +138,8 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bvitc, 0, 2);
             //mag
             int slot0MAG = 0xA9C;
-            int slot0MAGa = 0xABC;
-            int slot0MAGc = 0xACC;
+            int slot0MAGa = slot0MAG + 16;
+            int slot0MAGc = slot0MAGa + 16;
             slotmod = slot0MAG + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0MAGa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0MAGc + (comboBox1.SelectedIndex * 392);
@@ -136,8 +154,8 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bmagc, 0, 2);
             //agi
             int slot0AGI = 0xA9E;
-            int slot0AGIa = 0xABE;
-            int slot0AGIc = 0xACE;
+            int slot0AGIa = slot0AGI + 16;
+            int slot0AGIc = slot0AGIa + 16;
             slotmod = slot0AGI + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0AGIa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0AGIc + (comboBox1.SelectedIndex * 392);
@@ -152,8 +170,8 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bagic, 0, 2);
             //lu
             int slot0LU = 0xAA0;
-            int slot0LUa = 0xAC0;
-            int slot0LUc = 0xAD0;
+            int slot0LUa = slot0LU + 16;
+            int slot0LUc = slot0LUa + 16;
             slotmod = slot0LU + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0LUa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0LUc + (comboBox1.SelectedIndex * 392);
@@ -169,8 +187,8 @@ namespace SMTV_SaveEditor_CSHARP
 
             //hp
             int slot0HP = 0xA94;
-            int slot0HPa = 0xAB4;
-            int slot0HPc = 0xAD8;
+            int slot0HPa = slot0HP + 16;
+            int slot0HPc = slot0HPa + 16;
             slotmod = slot0HP + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0HPa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0HPc + (comboBox1.SelectedIndex * 392);
@@ -185,8 +203,8 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bhpc, 0, 2);
             //mp
             int slot0MP = 0xA96;
-            int slot0MPa = 0xAB6;
-            int slot0MPc = 0xADA;
+            int slot0MPa = slot0MP + 16;
+            int slot0MPc = slot0MPa + 16;
             slotmod = slot0MP + (comboBox1.SelectedIndex * 392);
             slotmoda = slot0MPa + (comboBox1.SelectedIndex * 392);
             slotmodc = slot0MPc + (comboBox1.SelectedIndex * 392);
@@ -203,8 +221,52 @@ namespace SMTV_SaveEditor_CSHARP
             bw.Write(bmpc, 0, 2);
 
 
-            br.Close();
-            fs.Close();
+            //skills
+
+
+            int slot0s1 = slot0ID + 10;
+            slotmod = slot0s1 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs1, 0, 2);
+
+            int slot0s2 = slot0s1 + 8;
+            slotmod = slot0s2 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs2, 0, 2);
+
+            int slot0s3 = slot0s2 + 8;
+            slotmod = slot0s3 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs3, 0, 2);
+
+            int slot0s4 = slot0s3 + 8;
+            slotmod = slot0s4 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs4, 0, 2);
+
+            int slot0s5 = slot0s4 + 8;
+            slotmod = slot0s5 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs5, 0, 2);
+
+            int slot0s6 = slot0s5 + 8;
+            slotmod = slot0s6 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs6, 0, 2);
+
+            int slot0s7 = slot0s6 + 8;
+            slotmod = slot0s7 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs7, 0, 2);
+
+            int slot0s8 = slot0s7 + 8;
+            slotmod = slot0s8 + (comboBox1.SelectedIndex * 392);
+            bw.BaseStream.Position = slotmod;
+            bw.Write(bs8, 0, 2);
+
+
+            //br.Close();
+            //fs.Close();
             bw.Close();
 
             MessageBox.Show("Changes applied","Success");
@@ -258,7 +320,47 @@ namespace SMTV_SaveEditor_CSHARP
             numericUpDown17.Value = test[16];
             numericUpDown18.Value = test[17];
             button1.Enabled = true;
+            //skills
+            //skills
+            if (test[22] != 0)
+            {
+                comboBox2.SelectedIndex = Convert.ToInt32(test[22]) - 1;
+            }
 
+            if (test[23] != 0)
+            {
+                comboBox3.SelectedIndex = Convert.ToInt32(test[23]) - 1;
+            }
+
+            if (test[24] != 0)
+            {
+                comboBox4.SelectedIndex = Convert.ToInt32(test[24]) - 1;
+            }
+
+            if (test[25] != 0)
+            {
+                comboBox5.SelectedIndex = Convert.ToInt32(test[25]) - 1;
+            }
+
+            if (test[26] != 0)
+            {
+                comboBox6.SelectedIndex = Convert.ToInt32(test[26]) - 1;
+            }
+
+            if (test[27] != 0)
+            {
+                comboBox7.SelectedIndex = Convert.ToInt32(test[27]) - 1;
+            }
+
+            if (test[28] != 0)
+            {
+                comboBox8.SelectedIndex = Convert.ToInt32(test[28]) - 1;
+            }
+
+            if (test[29] != 0)
+            {
+                comboBox9.SelectedIndex = Convert.ToInt32(test[29]) - 1;
+            }
 
 
 
@@ -313,6 +415,50 @@ namespace SMTV_SaveEditor_CSHARP
             numericUpDown5.Value = test[5];
             numericUpDown17.Value = test[16];
             numericUpDown18.Value = test[17];
+
+            //skills
+            if (test[22] != 0)
+            {
+                comboBox2.SelectedIndex = Convert.ToInt32(test[22]) - 1;
+            }                             
+                                          
+            if (test[23] != 0)            
+            {                             
+                comboBox3.SelectedIndex = Convert.ToInt32(test[23]) - 1;
+            }                             
+                                          
+            if (test[24] != 0)            
+            {                             
+                comboBox4.SelectedIndex = Convert.ToInt32(test[24]) - 1;
+            }                             
+                                          
+            if (test[25] != 0)            
+            {                             
+                comboBox5.SelectedIndex = Convert.ToInt32(test[25]) - 1;
+            }                             
+                                          
+            if (test[26] != 0)            
+            {                             
+                comboBox6.SelectedIndex = Convert.ToInt32(test[26]) - 1;
+            }                             
+                                          
+            if (test[27] != 0)            
+            {                             
+                comboBox7.SelectedIndex = Convert.ToInt32(test[27]) - 1;
+            }                             
+                                          
+            if (test[28] != 0)            
+            {                             
+                comboBox8.SelectedIndex = Convert.ToInt32(test[28]) - 1;
+            }                             
+                                          
+            if (test[29] != 0)            
+            {                             
+                comboBox9.SelectedIndex = Convert.ToInt32(test[29]) - 1;
+            }
+
+
+
             button1.Enabled = true;
            
         }

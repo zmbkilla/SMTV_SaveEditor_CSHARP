@@ -20,7 +20,7 @@ namespace SMTV_SaveEditor_CSHARP
         private void PL_inv_Load(object sender, EventArgs e)
         {
             var invlist = variables.itemlist();
-            int invlistc = invlist.Count() - 4;
+            int invlistc = invlist.Count() - 3;
             var itemdb = variables.ReadItemDB();
             
             for (int i = 0; i <= invlistc; i++)
@@ -28,9 +28,10 @@ namespace SMTV_SaveEditor_CSHARP
                 var itemform = new PL_Items();
                 itemform.numericUpDown1.Value = invlist[i];
 
-                if (i <= 80)
+                if (i <= 81)
                 {
                     itemform.label1.Text = itemdb.Rows[i]["itemcode"].ToString();
+                    itemform.label2.Text = itemdb.Rows[i]["decimal"].ToString();
                 }
                 
                 flowLayoutPanel1.Controls.Add(itemform);

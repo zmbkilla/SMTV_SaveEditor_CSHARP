@@ -44,6 +44,16 @@ namespace SMTV_SaveEditor_CSHARP
             decimal mp = numericUpDown7.Value;
             decimal mpa = numericUpDown20.Value;
             decimal mpc = numericUpDown21.Value;
+
+            decimal s1 = comboBox1.SelectedIndex + 1;
+            decimal s2 = comboBox2.SelectedIndex + 1;
+            decimal s3 = comboBox3.SelectedIndex + 1;
+            decimal s4 = comboBox4.SelectedIndex + 1;
+            decimal s5 = comboBox5.SelectedIndex + 1;
+            decimal s6 = comboBox6.SelectedIndex + 1;
+            decimal s7 = comboBox7.SelectedIndex + 1;
+            decimal s8 = comboBox8.SelectedIndex + 1;
+
             //char[] fcharar = Mac.ToCharArray();
 
 
@@ -68,6 +78,14 @@ namespace SMTV_SaveEditor_CSHARP
             byte[] bmp = BitConverter.GetBytes(Convert.ToInt32(mp));
             byte[] bmpa = BitConverter.GetBytes(Convert.ToInt32(mpa));
             byte[] bmpc = BitConverter.GetBytes(Convert.ToInt32(mpc));
+            byte[] bs1 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs2 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs3 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs4 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs5 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs6 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs7 = BitConverter.GetBytes(Convert.ToInt32(s1));
+            byte[] bs8 = BitConverter.GetBytes(Convert.ToInt32(s1));
 
 
             br.Close();
@@ -143,9 +161,49 @@ namespace SMTV_SaveEditor_CSHARP
             BWriter.BaseStream.Position = 0x8F2;
             BWriter.Write(bmpc, 0, 2);
 
+            
+            //skills
+            int slot0s1 = 0x970;
+            
+            BWriter.BaseStream.Position = slot0s1;
+            BWriter.Write(bs1, 0, 2);
+
+            int slot0s2 = slot0s1 + 8;
+            
+            BWriter.BaseStream.Position = slot0s2;
+            BWriter.Write(bs2, 0, 2);
+
+            int slot0s3 = slot0s2 + 8;
+            
+            BWriter.BaseStream.Position = slot0s3;
+            BWriter.Write(bs3, 0, 2);
+
+            int slot0s4 = slot0s3 + 8;
+           
+            BWriter.BaseStream.Position = slot0s4;
+            BWriter.Write(bs4, 0, 2);
+
+            int slot0s5 = slot0s4 + 8;
+            
+            BWriter.BaseStream.Position = slot0s5;
+            BWriter.Write(bs5, 0, 2);
+
+            int slot0s6 = slot0s5 + 8;
+           
+            BWriter.BaseStream.Position = slot0s6;
+            BWriter.Write(bs6, 0, 2);
+
+            int slot0s7 = slot0s6 + 8;
+          
+            BWriter.BaseStream.Position = slot0s7;
+            BWriter.Write(bs7, 0, 2);
+
+            int slot0s8 = slot0s7 + 8;
+         
+            BWriter.BaseStream.Position = slot0s8;
+            BWriter.Write(bs8, 0, 2);
+
             BWriter.Close();
-
-
 
             MessageBox.Show("success");
         }

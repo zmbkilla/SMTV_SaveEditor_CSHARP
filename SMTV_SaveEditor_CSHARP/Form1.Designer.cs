@@ -37,6 +37,10 @@
             this.autoEncodeDecodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualEncodeDecodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inputToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.outputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
@@ -86,7 +90,8 @@
             // saveutilCommandsToolStripMenuItem
             // 
             this.saveutilCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.autoEncodeDecodeToolStripMenuItem});
+            this.autoEncodeDecodeToolStripMenuItem,
+            this.manualEncodeDecodeToolStripMenuItem});
             this.saveutilCommandsToolStripMenuItem.Name = "saveutilCommandsToolStripMenuItem";
             this.saveutilCommandsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.saveutilCommandsToolStripMenuItem.Text = "Saveutil commands";
@@ -97,7 +102,7 @@
             this.inputToolStripMenuItem,
             this.executeToolStripMenuItem});
             this.autoEncodeDecodeToolStripMenuItem.Name = "autoEncodeDecodeToolStripMenuItem";
-            this.autoEncodeDecodeToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.autoEncodeDecodeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.autoEncodeDecodeToolStripMenuItem.Text = "Auto Encode/ Decode";
             // 
             // inputToolStripMenuItem
@@ -113,6 +118,38 @@
             this.executeToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.executeToolStripMenuItem.Text = "Execute";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.executeToolStripMenuItem_Click);
+            // 
+            // manualEncodeDecodeToolStripMenuItem
+            // 
+            this.manualEncodeDecodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inputToolStripMenuItem1,
+            this.outputToolStripMenuItem,
+            this.executeToolStripMenuItem1});
+            this.manualEncodeDecodeToolStripMenuItem.Name = "manualEncodeDecodeToolStripMenuItem";
+            this.manualEncodeDecodeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.manualEncodeDecodeToolStripMenuItem.Text = "Manual Encode/Decode";
+            // 
+            // inputToolStripMenuItem1
+            // 
+            this.inputToolStripMenuItem1.Name = "inputToolStripMenuItem1";
+            this.inputToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.inputToolStripMenuItem1.Text = "Input";
+            this.inputToolStripMenuItem1.Click += new System.EventHandler(this.inputToolStripMenuItem1_Click);
+            // 
+            // outputToolStripMenuItem
+            // 
+            this.outputToolStripMenuItem.Name = "outputToolStripMenuItem";
+            this.outputToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.outputToolStripMenuItem.Text = "Output";
+            this.outputToolStripMenuItem.Click += new System.EventHandler(this.outputToolStripMenuItem_Click);
+            // 
+            // executeToolStripMenuItem1
+            // 
+            this.executeToolStripMenuItem1.Enabled = false;
+            this.executeToolStripMenuItem1.Name = "executeToolStripMenuItem1";
+            this.executeToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.executeToolStripMenuItem1.Text = "Execute";
+            this.executeToolStripMenuItem1.Click += new System.EventHandler(this.executeToolStripMenuItem1_Click);
             // 
             // button1
             // 
@@ -176,6 +213,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "Essences";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -231,6 +269,10 @@
         private System.Windows.Forms.ToolStripMenuItem inputToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem executeToolStripMenuItem;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ToolStripMenuItem manualEncodeDecodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inputToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem outputToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem executeToolStripMenuItem1;
     }
 }
 

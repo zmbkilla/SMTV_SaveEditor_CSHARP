@@ -18,6 +18,18 @@ namespace SMTV_SaveEditor_CSHARP
 
         public static int[] demonid = new int[] { 0xAe6, 0xC6e, 0xDF6, 0xF7E, 0x1101, 0x128E, 0x1416, 0x159E, 0x1726, 0x18AE, 0x1A36 };
 
+        public static Stream savestreamR()
+        {
+            Stream stream = File.OpenRead(SaveC.Save_Dir);
+            return stream;
+        }
+
+        public static Stream savestreamW()
+        {
+            Stream stream = File.OpenWrite(SaveC.Save_Dir);
+            return stream;
+        }
+
         public static int[] demonquery(int index)
         {
 

@@ -107,37 +107,43 @@ namespace SMTV_SaveEditor_CSHARP
         //load decrypted save
         private void openDecryptedSaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opf = new OpenFileDialog();
-
-            
-            
-
-            if(opf.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog opf = new OpenFileDialog())
             {
-                
-
-                SaveC.Save_Dir = opf.FileName.ToString();
-                if (SaveC.Save_Dir != null)
+                if (opf.ShowDialog() == DialogResult.OK)
                 {
-                    //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
-                    //fs.Close();
-                    BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
-                    string savecheck = null;
-                    for (int i = 0x0; i <= 0x1; i++)
-                    {
-                        br.BaseStream.Position = i;
 
-                        savecheck += br.ReadByte().ToString("X2");
-                    }
-                    if(savecheck == "FFFC")
+
+                    SaveC.Save_Dir = opf.FileName.ToString();
+                    if (SaveC.Save_Dir != null)
                     {
-                        MessageBox.Show("save is encrypted");
+                        //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
+                        //fs.Close();
+                        BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+                        string savecheck = null;
+                        for (int i = 0x0; i <= 0x1; i++)
+                        {
+                            br.BaseStream.Position = i;
+
+                            savecheck += br.ReadByte().ToString("X2");
+                        }
+                        if (savecheck == "FFFC")
+                        {
+                            MessageBox.Show("save is encrypted");
+                        }
+
+                        br.Dispose();
+                        br.Close();
                     }
+
+                    MessageBox.Show("Save File Selected");
+                    fullControls(this);
                 }
-
-                MessageBox.Show("Save File Selected");
-                fullControls(this);
             }
+
+            
+            
+
+            
 
 
 
@@ -269,6 +275,8 @@ namespace SMTV_SaveEditor_CSHARP
             var data_pl = new PL_Stat();
             //FileStream fs = new FileStream(SaveC.Save_Dir, FileMode.Open);
             //fs.Close();
+
+            
             using (BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir)))
             {
                 string STR = null;
@@ -600,8 +608,28 @@ namespace SMTV_SaveEditor_CSHARP
                 data_pl.comboBox7.SelectedIndex = s7val - 1;
                 data_pl.comboBox8.SelectedIndex = s8val - 1;
 
+                try
+                {
+                    
+
+
+                    br.Dispose();
+                    br.Close();
+
+                   
+
+                }
+                catch (Exception exp)
+                {
+                    //Assuming you have included using 'namespace System.Diagnostics'
+                    Debug.WriteLine(exp.ToString());
+                }
 
                 br.Close();
+                br.Dispose();
+
+                
+
             }
             
             //fs.Close();
@@ -665,19 +693,22 @@ namespace SMTV_SaveEditor_CSHARP
 
         private void inputToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opd = new OpenFileDialog();
-
-            if (opd.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog opd = new OpenFileDialog())
             {
-                inputToolStripMenuItem1.Text = opd.FileName.ToString();
-                SaveC.Input_Dir = opd.FileName.ToString();
-
-                if (SaveC.Input_Dir != null && SaveC.Output_Dir != null)
+                if (opd.ShowDialog() == DialogResult.OK)
                 {
-                    executeToolStripMenuItem1.Enabled = true;
+                    inputToolStripMenuItem1.Text = opd.FileName.ToString();
+                    SaveC.Input_Dir = opd.FileName.ToString();
+
+                    if (SaveC.Input_Dir != null && SaveC.Output_Dir != null)
+                    {
+                        executeToolStripMenuItem1.Enabled = true;
+                    }
+
                 }
-                
-            }
+            } 
+
+           
         }
 
         private void executeToolStripMenuItem1_Click(object sender, EventArgs e)

@@ -92,7 +92,8 @@ namespace SMTV_SaveEditor_CSHARP
 
             //br.Close();
 
-
+            
+            
             BinaryWriter bw = new BinaryWriter(File.OpenWrite(SaveC.Save_Dir));
 
             //demon id

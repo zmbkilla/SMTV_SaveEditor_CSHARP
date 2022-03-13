@@ -170,7 +170,11 @@ namespace SMTV_SaveEditor_CSHARP
                 int slot0s1 = 0x970;
 
                 BWriter.BaseStream.Position = slot0s1;
-                BWriter.Write(bs1, 0, 2);
+                if(comboBox1.Text != null && comboBox1.SelectedIndex == 0)
+                {
+                    BWriter.Write(bs1, 0, 2);
+                }
+                
 
                 int slot0s2 = slot0s1 + 8;
 

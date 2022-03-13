@@ -448,7 +448,9 @@ namespace SMTV_SaveEditor_CSHARP
                     hpa += br.ReadByte().ToString("X2");
                 }
 
-                for (int i = 0x8DD; i >= 0x8DC; i--)
+                //old address = 0x8DD 0x8DC
+
+                for (int i = 0x8F1; i >= 0x8F0; i--)
                 {
                     br.BaseStream.Position = i;
 
@@ -471,7 +473,9 @@ namespace SMTV_SaveEditor_CSHARP
                     mpa += br.ReadByte().ToString("X2");
                 }
 
-                for (int i = 0x8DF; i >= 0x8DE; i--)
+                //old address = 0x8DF 0x8DE
+
+                for (int i = 0x8F3; i >= 0x8F2; i--)
                 {
                     br.BaseStream.Position = i;
 

@@ -39,5 +39,31 @@ namespace SMTV_SaveEditor_CSHARP
 
             MessageBox.Show("item count: " + flowLayoutPanel1.Controls.Count + "control count: " + flowLayoutPanel1.Controls.Count, "test");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            flowLayoutPanel1.Controls.Clear();
+            var invlist = variables.itemlist();
+            int invlistc = invlist.Count() - 3;
+            var itemdb = variables.ReadItemDB();
+
+            
+
+            for (int i = 0; i <= invlistc; i++)
+            {
+                var itemform = new PL_Items();
+                itemform.numericUpDown1.Value = 99;
+
+                if (i <= 81)
+                {
+                    itemform.label1.Text = itemdb.Rows[i]["itemcode"].ToString();
+                    itemform.label2.Text = itemdb.Rows[i]["decimal"].ToString();
+                }
+
+                flowLayoutPanel1.Controls.Add(itemform);
+            }
+
+        }
     }
 }

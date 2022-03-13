@@ -539,7 +539,9 @@ namespace SMTV_SaveEditor_CSHARP
                     br.BaseStream.Position = i;
                     hex = br.ReadByte().ToString("X2");
 
-
+                    
+                    
+                    
 
                     ItemCode.Add(Int32.Parse(hex, System.Globalization.NumberStyles.HexNumber));
 
@@ -572,25 +574,25 @@ namespace SMTV_SaveEditor_CSHARP
             return data;
         }
 
-        public static int[] essenceu()
+        public static DataTable essenceu()
         {
-            using (BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir)))
-            {
-                List<int> loadess = new List<int>();
+            var fileName = string.Format("{0}\\DemonDB.xls", Directory.GetCurrentDirectory());
 
-                for (int i = 0x34D8; i <= 0x35CC; i++)
-                {
-                    string hex;
-                    br.BaseStream.Position = i;
-                    hex = br.ReadByte().ToString("X2");
+            var connectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0; data source={0};User Id =admin;Password=;Extended Properties=Excel 8.0;", fileName);
 
-                    loadess.Add(Int32.Parse(hex, System.Globalization.NumberStyles.HexNumber));
-                }
+            var adapter = new OleDbDataAdapter("SELECT * FROM [EssenceList$]", connectionString);
+            var ds = new DataSet();
+            var data = new DataTable();
+            adapter.Fill(data);
 
-                int[] fessenceu = loadess.ToArray();
-                return fessenceu;
-            } 
-           
+
+
+
+            adapter.Dispose();
+            ds.Dispose();
+
+            return data;
+
         }
 
         public static int[] essencea()
@@ -615,11 +617,30 @@ namespace SMTV_SaveEditor_CSHARP
                 }
 
                 int[] rint = loada.ToArray();
+                br.Close();
                 return rint;
             }
+
+            
                 
             
         }
+
+        public static int demonoff(int i)
+        {
+            BinaryReader br = new BinaryReader(File.OpenRead(SaveC.Save_Dir));
+            string pos = null;
+
+            br.BaseStream.Position = i;
+            pos = br.ReadByte().ToString();
+
+            int convert = Int32.Parse(pos, System.Globalization.NumberStyles.HexNumber);
+            br.Close();
+            return convert;
+
+        }
+
+
 
     }
 }

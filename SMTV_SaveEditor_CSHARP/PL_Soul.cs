@@ -22,18 +22,27 @@ namespace SMTV_SaveEditor_CSHARP
 
             var essenceu = variables.essenceu();
             var essencea = variables.essencea();
-            int count = essenceu.Count() - 1;
+            int count = essenceu.Rows.Count - 1;
+            
             
             for (int i = 0; i <= count; i++)
             {
                 var datarows = new PL_Essence();
-                if (essenceu[i] == 0)
+                datarows.label1.Text = essenceu.Rows[i]["name"].ToString();
+
+                string test = essenceu.Rows[i]["PositionID"].ToString();
+                int change = Convert.ToInt32(test,16);
+                int converter = variables.demonoff(change);
+
+                if (converter == 0)
                 {
                     datarows.checkBox1.Checked = false;
-                } else if( essenceu[i] == 1)
+                } else if( converter == 1)
                 {
                     datarows.checkBox1.Checked = true;
                 }
+
+                datarows.label2.Text = test;
 
                 flowLayoutPanel1.Controls.Add(datarows);
             }
